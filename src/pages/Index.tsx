@@ -123,7 +123,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/59101c21-20ce-4e2a-bd40-c941eb93f247.png" 
                   alt="HYPERLINUX iDRAC Bot Discord Interface" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
             </div>
@@ -250,7 +250,7 @@ const Index = () => {
                     <img 
                       src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
                       alt="iDRAC IP Dashboard" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </AspectRatio>
                 </div>
@@ -260,7 +260,7 @@ const Index = () => {
                       <img 
                         src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
                         alt="iDRAC Status" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </AspectRatio>
                   </div>
@@ -269,7 +269,7 @@ const Index = () => {
                       <img 
                         src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
                         alt="IP Information" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </AspectRatio>
                   </div>
@@ -302,7 +302,7 @@ const Index = () => {
                 <img 
                   src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
                   alt="iDRAC Command List" 
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
             </div>
@@ -406,7 +406,7 @@ const Index = () => {
                     <img 
                       src="/lovable-uploads/da156771-d20b-4957-85f4-771765653880.png" 
                       alt="Bot Status" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </AspectRatio>
                 </div>
@@ -416,7 +416,7 @@ const Index = () => {
                       <img 
                         src="/lovable-uploads/a56f0b41-b27a-4d4d-9c1d-02d623742b49.png" 
                         alt="User Management" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </AspectRatio>
                   </div>
@@ -425,7 +425,7 @@ const Index = () => {
                       <img 
                         src="/lovable-uploads/a8d003ac-16bb-4f39-bfe6-6cd259980468.png" 
                         alt="Game Panel Status" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </AspectRatio>
                   </div>
