@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Download, Users, AlertTriangle, CheckCircle, Lock, Eye } from "lucide-react";
@@ -161,27 +160,13 @@ const Index = () => {
             <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/59101c21-20ce-4e2a-bd40-c941eb93f247.png" 
-                  alt="HYPERLINUX iDRAC Bot Discord Interface" 
+                  src="/lovable-uploads/7f056c4f-07de-408a-b1e7-e4eceb3734bb.png" 
+                  alt="HYPERLINUX iDRAC Bot IP Dashboard" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
-                <h3 className="font-medium text-blue-300">Discord Integration</h3>
-                <p className="text-sm text-slate-400">Powerful command interface in Discord</p>
-              </div>
-            </div>
-            
-            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
-              <AspectRatio ratio={16/9} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
-                  alt="iDRAC IP Dashboard" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
-              <div className="p-4">
-                <h3 className="font-medium text-blue-300">IP Management</h3>
+                <h3 className="font-medium text-blue-300">IP Dashboard</h3>
                 <p className="text-sm text-slate-400">Comprehensive iDRAC IP database</p>
               </div>
             </div>
@@ -189,22 +174,36 @@ const Index = () => {
             <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
-                  alt="iDRAC Status" 
+                  src="/lovable-uploads/1bc9dbf9-e7f6-47bc-81f6-9d35933e05cf.png" 
+                  alt="iDRAC Status Update" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
-                <h3 className="font-medium text-blue-300">System Status</h3>
-                <p className="text-sm text-slate-400">Real-time monitoring and alerts</p>
+                <h3 className="font-medium text-blue-300">Status Updates</h3>
+                <p className="text-sm text-slate-400">Real-time status notifications</p>
               </div>
             </div>
             
             <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
-                  alt="IP Information" 
+                  src="/lovable-uploads/e0476fdf-763e-4ead-8b98-f02165584946.png" 
+                  alt="iDRAC System Status" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">System Status</h3>
+                <p className="text-sm text-slate-400">Database and IP monitoring</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/c503d9e3-1f99-4637-9055-5fee2163aab3.png" 
+                  alt="IP Information Details" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
@@ -217,28 +216,84 @@ const Index = () => {
             <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
-                  alt="iDRAC Command List" 
+                  src="/lovable-uploads/3b6c067d-5f64-46ca-85bd-25195b9a9cea.png" 
+                  alt="IP Info Command" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
-                <h3 className="font-medium text-blue-300">Command Matrix</h3>
-                <p className="text-sm text-slate-400">Comprehensive command library</p>
+                <h3 className="font-medium text-blue-300">IP Lookup</h3>
+                <p className="text-sm text-slate-400">Direct IP intelligence commands</p>
               </div>
             </div>
             
             <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/da156771-d20b-4957-85f4-771765653880.png" 
-                  alt="Bot Status" 
+                  src="/lovable-uploads/ad107a68-fa76-4c1a-866b-cffb3018b583.png" 
+                  alt="iDRAC Bot Status" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
                 <h3 className="font-medium text-blue-300">Bot Status</h3>
-                <p className="text-sm text-slate-400">Real-time operational metrics</p>
+                <p className="text-sm text-slate-400">Live operational indicators</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/fc9a5f58-ecbc-4d79-b93a-6dbe2e8c39d5.png" 
+                  alt="Game Panel" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">Game Panel</h3>
+                <p className="text-sm text-slate-400">Integrated system monitoring</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/923f9e27-d708-48bb-807d-1e732264960c.png" 
+                  alt="iDRAC Command List" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">Command Matrix</h3>
+                <p className="text-sm text-slate-400">Full command reference guide</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/80404885-8e92-4a05-83fd-a8621c8b8b83.png" 
+                  alt="User Management" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">User Management</h3>
+                <p className="text-sm text-slate-400">Admin user control system</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/37a48ced-c0b9-4f73-868b-21fa7e6a6df1.png" 
+                  alt="System Monitoring" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">System Monitoring</h3>
+                <p className="text-sm text-slate-400">Real-time performance tracking</p>
               </div>
             </div>
           </div>
@@ -473,7 +528,7 @@ const Index = () => {
               <div className="mt-6">
                 <AspectRatio ratio={1/1.4} className="overflow-hidden">
                   <img 
-                    src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
+                    src="/lovable-uploads/923f9e27-d708-48bb-807d-1e732264960c.png" 
                     alt="iDRAC Command List" 
                     className="w-full h-full object-contain"
                   />
@@ -595,8 +650,8 @@ const Index = () => {
                 <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
                   <AspectRatio ratio={16/9} className="overflow-hidden">
                     <img 
-                      src="/lovable-uploads/da156771-d20b-4957-85f4-771765653880.png" 
-                      alt="Bot Status" 
+                      src="/lovable-uploads/37a48ced-c0b9-4f73-868b-21fa7e6a6df1.png" 
+                      alt="System Monitoring Dashboard" 
                       className="w-full h-full object-contain"
                     />
                   </AspectRatio>
@@ -605,7 +660,7 @@ const Index = () => {
                   <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
                     <AspectRatio ratio={1/1} className="overflow-hidden">
                       <img 
-                        src="/lovable-uploads/a56f0b41-b27a-4d4d-9c1d-02d623742b49.png" 
+                        src="/lovable-uploads/80404885-8e92-4a05-83fd-a8621c8b8b83.png" 
                         alt="User Management" 
                         className="w-full h-full object-contain"
                       />
@@ -614,7 +669,7 @@ const Index = () => {
                   <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
                     <AspectRatio ratio={1/1} className="overflow-hidden">
                       <img 
-                        src="/lovable-uploads/a8d003ac-16bb-4f39-bfe6-6cd259980468.png" 
+                        src="/lovable-uploads/fc9a5f58-ecbc-4d79-b93a-6dbe2e8c39d5.png" 
                         alt="Game Panel Status" 
                         className="w-full h-full object-contain"
                       />
