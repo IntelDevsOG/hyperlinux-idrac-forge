@@ -1,12 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Download, Users, AlertTriangle } from "lucide-react";
+import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Download, Users, AlertTriangle, CheckCircle, Lock, Eye } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   
   useEffect(() => {
     setIsLoaded(true);
@@ -15,8 +18,23 @@ const Index = () => {
       setActiveFeature((prev) => (prev + 1) % 4);
     }, 3000);
     
-    return () => clearInterval(featureInterval);
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowScrollIndicator(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearInterval(featureInterval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  const handleBuyBot = () => {
+    window.location.href = "https://discord.gg/YngjxnDC";
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-black text-white">
@@ -30,16 +48,56 @@ const Index = () => {
             </span>
             <span className="px-1.5 py-0.5 text-xs bg-blue-600 rounded text-white font-semibold">BOT</span>
           </div>
-          <nav className="hidden md:flex space-x-8">
-            <a href="#features" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">Features</a>
-            <a href="#commands" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">Commands</a>
-            <a href="#dashboard" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">Dashboard</a>
-          </nav>
-          <a href="#invite" className="inline-block">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Invite Bot
-            </Button>
-          </a>
+          
+          <div className="hidden md:flex items-center space-x-8">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="#features" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">
+                    Features
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="#commands" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">
+                    Commands
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="#dashboard" className="text-sm text-slate-300 hover:text-blue-400 transition-colors">
+                    Dashboard
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            
+            <button onClick={handleBuyBot} className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 py-2 rounded text-white font-medium hover:shadow-lg hover:shadow-blue-700/20 transition-all">
+              Buy Bot
+            </button>
+          </div>
+          
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="p-2 text-slate-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                  </svg>
+                </button>
+              </SheetTrigger>
+              <SheetContent className="bg-slate-900 border-l border-blue-900/30">
+                <div className="flex flex-col space-y-6 mt-8">
+                  <a href="#features" className="text-lg text-slate-300 hover:text-blue-400 transition-colors">Features</a>
+                  <a href="#commands" className="text-lg text-slate-300 hover:text-blue-400 transition-colors">Commands</a>
+                  <a href="#dashboard" className="text-lg text-slate-300 hover:text-blue-400 transition-colors">Dashboard</a>
+                  <button onClick={handleBuyBot} className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 py-3 rounded text-white font-medium hover:shadow-lg hover:shadow-blue-700/20 transition-all mt-4">
+                    Buy Bot
+                  </button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
 
@@ -67,65 +125,121 @@ const Index = () => {
               The ultimate Discord bot for discovering, managing, and interacting with Dell iDRAC systems. Scan networks, extract IPs, and gain full access to remote management capabilities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg" id="invite">
-                Invite to Discord
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" className="border-blue-800 text-slate-300 hover:bg-slate-800 px-8 py-6 text-lg">
-                View Documentation
+              <Button variant="premium" size="xl" onClick={handleBuyBot} id="buy-bot" className="group">
+                Buy Bot
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
         </div>
+        
+        {/* Scroll indicator */}
+        {showScrollIndicator && (
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <span className="text-slate-400 text-sm mb-2">Scroll to explore</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5L12 19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"/>
+            </svg>
+          </div>
+        )}
       </section>
 
-      {/* Discord Preview Section */}
+      {/* Gallery Preview Section */}
       <section className="py-16 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1">
-              <h2 className="text-3xl font-bold mb-4 text-blue-300">Powerful Discord Integration</h2>
-              <p className="text-slate-300 mb-6">
-                HYPERLINUX iDRAC bot seamlessly integrates with your Discord server, providing a powerful command interface for iDRAC system discovery and interaction.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="bg-blue-900/20 p-2 rounded mt-1 mr-3">
-                    <Terminal className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-blue-200">Command-Based Interface</h3>
-                    <p className="text-sm text-slate-400">Execute powerful commands directly from your Discord server.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-blue-900/20 p-2 rounded mt-1 mr-3">
-                    <Database className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-blue-200">IP Database</h3>
-                    <p className="text-sm text-slate-400">Store and access thousands of validated iDRAC IPs.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-blue-900/20 p-2 rounded mt-1 mr-3">
-                    <Globe className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-blue-200">Geolocation Data</h3>
-                    <p className="text-sm text-slate-400">View detailed IP information including location and ISP details.</p>
-                  </div>
-                </div>
-              </div>
+          <div className="text-center mb-12">
+            <div className="inline-block px-3 py-1 bg-blue-900/30 rounded-full text-blue-400 text-sm font-medium mb-4">
+              COMMAND CENTER
             </div>
-            <div className="order-1 md:order-2 bg-slate-950 p-4 rounded-xl border border-blue-900/50 shadow-lg shadow-blue-900/10">
-              <AspectRatio ratio={16/9} className="overflow-hidden rounded-lg">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">The Ultimate iDRAC Control Interface</h2>
+            <p className="text-slate-300 max-w-2xl mx-auto">
+              View a comprehensive gallery of HYPERLINUX iDRAC bot capabilities.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
                   src="/lovable-uploads/59101c21-20ce-4e2a-bd40-c941eb93f247.png" 
                   alt="HYPERLINUX iDRAC Bot Discord Interface" 
                   className="w-full h-full object-contain"
                 />
               </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">Discord Integration</h3>
+                <p className="text-sm text-slate-400">Powerful command interface in Discord</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
+                  alt="iDRAC IP Dashboard" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">IP Management</h3>
+                <p className="text-sm text-slate-400">Comprehensive iDRAC IP database</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
+                  alt="iDRAC Status" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">System Status</h3>
+                <p className="text-sm text-slate-400">Real-time monitoring and alerts</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
+                  alt="IP Information" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">IP Intelligence</h3>
+                <p className="text-sm text-slate-400">Detailed geolocation and network data</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
+                  alt="iDRAC Command List" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">Command Matrix</h3>
+                <p className="text-sm text-slate-400">Comprehensive command library</p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-800 rounded-xl border border-blue-900/30 overflow-hidden hover:shadow-lg hover:shadow-blue-900/20 transition-all">
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/da156771-d20b-4957-85f4-771765653880.png" 
+                  alt="Bot Status" 
+                  className="w-full h-full object-contain"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-blue-300">Bot Status</h3>
+                <p className="text-sm text-slate-400">Real-time operational metrics</p>
+              </div>
             </div>
           </div>
         </div>
@@ -145,8 +259,8 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <div className={`transition-all duration-500 ${activeFeature === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute'}`}>
+            <div className="order-2 md:order-1 relative h-[400px]">
+              <div className={`absolute transition-all duration-500 ${activeFeature === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'}`}>
                 <div className="flex items-center mb-4">
                   <Server className="h-8 w-8 text-blue-400 mr-3" />
                   <h3 className="text-2xl font-bold">IP Discovery</h3>
@@ -154,23 +268,32 @@ const Index = () => {
                 <p className="text-slate-300 mb-4">
                   Automatically discover and validate iDRAC IPs across networks with powerful scanning algorithms.
                 </p>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Extract valid iDRAC IPs from network ranges
+                <ul className="space-y-4 text-slate-300">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Network Range Scanning</h4>
+                      <p className="text-slate-400">Extract valid iDRAC IPs from defined network ranges with high precision</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Validate and test connection capabilities
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Connection Validation</h4>
+                      <p className="text-slate-400">Test and verify connectivity to each discovered iDRAC system</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Store results in secure database
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Secure Database Storage</h4>
+                      <p className="text-slate-400">Store validated IPs in an encrypted, searchable database</p>
+                    </div>
                   </li>
                 </ul>
               </div>
               
-              <div className={`transition-all duration-500 ${activeFeature === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute'}`}>
+              <div className={`absolute transition-all duration-500 ${activeFeature === 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'}`}>
                 <div className="flex items-center mb-4">
                   <Shield className="h-8 w-8 text-blue-400 mr-3" />
                   <h3 className="text-2xl font-bold">Access Management</h3>
@@ -178,23 +301,32 @@ const Index = () => {
                 <p className="text-slate-300 mb-4">
                   Control who can access your iDRAC systems with advanced user management and permissions.
                 </p>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Role-based access control for commands
+                <ul className="space-y-4 text-slate-300">
+                  <li className="flex items-start">
+                    <Lock className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Role-Based Access</h4>
+                      <p className="text-slate-400">Configure granular permissions based on user roles within Discord</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Admin-only restricted operations
+                  <li className="flex items-start">
+                    <Lock className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Admin Controls</h4>
+                      <p className="text-slate-400">Special commands and capabilities exclusive to server administrators</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    User activity logging and monitoring
+                  <li className="flex items-start">
+                    <Eye className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Activity Monitoring</h4>
+                      <p className="text-slate-400">Track all user interactions with the bot and iDRAC systems</p>
+                    </div>
                   </li>
                 </ul>
               </div>
               
-              <div className={`transition-all duration-500 ${activeFeature === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute'}`}>
+              <div className={`absolute transition-all duration-500 ${activeFeature === 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'}`}>
                 <div className="flex items-center mb-4">
                   <Zap className="h-8 w-8 text-blue-400 mr-3" />
                   <h3 className="text-2xl font-bold">Automated Operations</h3>
@@ -202,23 +334,32 @@ const Index = () => {
                 <p className="text-slate-300 mb-4">
                   Execute automated operations across multiple iDRAC systems simultaneously.
                 </p>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Batch operations across multiple systems
+                <ul className="space-y-4 text-slate-300">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Batch Processing</h4>
+                      <p className="text-slate-400">Run commands across multiple systems with a single instruction</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Scheduled scanning and monitoring
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Scheduled Tasks</h4>
+                      <p className="text-slate-400">Configure automated scanning and monitoring at specific intervals</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Customizable automation workflows
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Custom Workflows</h4>
+                      <p className="text-slate-400">Create personalized automation sequences for complex operations</p>
+                    </div>
                   </li>
                 </ul>
               </div>
               
-              <div className={`transition-all duration-500 ${activeFeature === 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute'}`}>
+              <div className={`absolute transition-all duration-500 ${activeFeature === 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'}`}>
                 <div className="flex items-center mb-4">
                   <Globe className="h-8 w-8 text-blue-400 mr-3" />
                   <h3 className="text-2xl font-bold">Geolocation Intelligence</h3>
@@ -226,53 +367,79 @@ const Index = () => {
                 <p className="text-slate-300 mb-4">
                   Get detailed information about the geographic location of iDRAC systems.
                 </p>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    IP geolocation with city and country data
+                <ul className="space-y-4 text-slate-300">
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Precise Location Data</h4>
+                      <p className="text-slate-400">View city, region, and country information for any iDRAC IP</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    ISP and network information
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Network Attribution</h4>
+                      <p className="text-slate-400">Identify ISP and network details associated with each system</p>
+                    </div>
                   </li>
-                  <li className="flex items-center">
-                    <div className="h-1.5 w-1.5 rounded-full bg-blue-400 mr-2"></div>
-                    Region-based filtering capabilities
+                  <li className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-medium text-blue-200">Geographic Filtering</h4>
+                      <p className="text-slate-400">Target operations to specific regions or countries</p>
+                    </div>
                   </li>
                 </ul>
               </div>
             </div>
             
-            <div className="order-1 md:order-2 bg-slate-900 rounded-xl border border-blue-900/30 shadow-xl overflow-hidden">
-              <div className="grid grid-cols-1 gap-4 p-4">
-                <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
-                  <AspectRatio ratio={16/9} className="overflow-hidden">
-                    <img 
-                      src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
-                      alt="iDRAC IP Dashboard" 
-                      className="w-full h-full object-contain"
-                    />
-                  </AspectRatio>
+            <div className="order-1 md:order-2 bg-slate-900 rounded-xl border border-blue-900/30 shadow-xl overflow-hidden relative">
+              <div className="absolute top-3 left-3 flex space-x-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="mt-8 p-4">
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
+                    <AspectRatio ratio={16/9} className="overflow-hidden">
+                      <img 
+                        src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
+                        alt="iDRAC IP Dashboard" 
+                        className="w-full h-full object-contain"
+                      />
+                    </AspectRatio>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
+                      <AspectRatio ratio={16/9} className="overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
+                          alt="iDRAC Status" 
+                          className="w-full h-full object-contain"
+                        />
+                      </AspectRatio>
+                    </div>
+                    <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
+                      <AspectRatio ratio={16/9} className="overflow-hidden">
+                        <img 
+                          src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
+                          alt="IP Information" 
+                          className="w-full h-full object-contain"
+                        />
+                      </AspectRatio>
+                    </div>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
-                    <AspectRatio ratio={16/9} className="overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
-                        alt="iDRAC Status" 
-                        className="w-full h-full object-contain"
-                      />
-                    </AspectRatio>
-                  </div>
-                  <div className="bg-slate-800 rounded-lg overflow-hidden border border-blue-900/30">
-                    <AspectRatio ratio={16/9} className="overflow-hidden">
-                      <img 
-                        src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
-                        alt="IP Information" 
-                        className="w-full h-full object-contain"
-                      />
-                    </AspectRatio>
-                  </div>
+                <div className="flex space-x-1 justify-center mt-4">
+                  {[0, 1, 2, 3].map((i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveFeature(i)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${activeFeature === i ? 'bg-blue-400' : 'bg-slate-600'}`}
+                      aria-label={`View feature ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -296,67 +463,84 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-slate-800 p-6 rounded-xl shadow-2xl border border-blue-900/30">
-              <AspectRatio ratio={1/1.4} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
-                  alt="iDRAC Command List" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-slate-800 p-6 rounded-xl shadow-2xl border border-blue-900/30 group hover:shadow-blue-900/20 hover:shadow-lg transition-all relative">
+              <div className="absolute top-3 left-3 flex space-x-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="mt-6">
+                <AspectRatio ratio={1/1.4} className="overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/f408afba-4e6e-417f-bdcd-a09eaa1e7595.png" 
+                    alt="iDRAC Command List" 
+                    className="w-full h-full object-contain"
+                  />
+                </AspectRatio>
+              </div>
             </div>
             
             <div className="flex flex-col justify-center">
               <h3 className="text-2xl font-bold mb-6 text-blue-300">Access the Grid</h3>
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
-                    <Terminal className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-blue-200">!help</h4>
-                    <p className="text-slate-300">Displays the complete command matrix with available options.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
-                    <Globe className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-blue-200">!getips</h4>
-                    <p className="text-slate-300">Extracts the latest IP intelligence from the network.</p>
+                <div className="p-4 bg-slate-800/50 rounded-lg border border-blue-900/20 hover:border-blue-900/40 transition-colors">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
+                      <Terminal className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-blue-200">!help</h4>
+                      <p className="text-slate-300">Displays the complete command matrix with available options.</p>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
-                    <Database className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-blue-200">!ipinfo <span className="text-blue-400">&lt;ip&gt;</span></h4>
-                    <p className="text-slate-300">Retrieves detailed information about a specific IP address.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
-                    <Users className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-blue-200">!adduser <span className="text-blue-400">&lt;user&gt;</span></h4>
-                    <p className="text-slate-300">Recruits a new operative to your team. <span className="text-blue-400 font-semibold">[Admin Only]</span></p>
+                <div className="p-4 bg-slate-800/50 rounded-lg border border-blue-900/20 hover:border-blue-900/40 transition-colors">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
+                      <Globe className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-blue-200">!getips</h4>
+                      <p className="text-slate-300">Extracts the latest IP intelligence from the network.</p>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
-                    <AlertTriangle className="h-5 w-5 text-blue-400" />
+                <div className="p-4 bg-slate-800/50 rounded-lg border border-blue-900/20 hover:border-blue-900/40 transition-colors">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
+                      <Database className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-blue-200">!ipinfo <span className="text-blue-400">&lt;ip&gt;</span></h4>
+                      <p className="text-slate-300">Retrieves detailed information about a specific IP address.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg text-blue-200">!setstatus</h4>
-                    <p className="text-slate-300">Sets the channel where information will be sent. <span className="text-blue-400 font-semibold">[Admin Only]</span></p>
+                </div>
+                
+                <div className="p-4 bg-slate-800/50 rounded-lg border border-blue-900/20 hover:border-blue-900/40 transition-colors">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
+                      <Users className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-blue-200">!adduser <span className="text-blue-400">&lt;user&gt;</span></h4>
+                      <p className="text-slate-300">Recruits a new operative to your team. <span className="text-blue-400 font-semibold">[Admin Only]</span></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="p-4 bg-slate-800/50 rounded-lg border border-blue-900/20 hover:border-blue-900/40 transition-colors">
+                  <div className="flex items-start">
+                    <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
+                      <AlertTriangle className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg text-blue-200">!setstatus</h4>
+                      <p className="text-slate-300">Sets the channel where information will be sent. <span className="text-blue-400 font-semibold">[Admin Only]</span></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -378,8 +562,8 @@ const Index = () => {
                 The HYPERLINUX iDRAC bot continuously monitors the network for valid iDRAC systems and provides real-time status updates directly in your Discord server.
               </p>
               <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
+                <div className="flex items-start p-4 bg-slate-800/50 rounded-lg border border-blue-900/20">
+                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
                     <Database className="h-5 w-5 text-blue-400" />
                   </div>
                   <div>
@@ -387,8 +571,8 @@ const Index = () => {
                     <p className="text-slate-300">Track thousands of discovered iDRAC systems with live status indicators.</p>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1">
+                <div className="flex items-start p-4 bg-slate-800/50 rounded-lg border border-blue-900/20">
+                  <div className="bg-blue-600/10 p-2 rounded mr-4 mt-1 flex-shrink-0">
                     <Server className="h-5 w-5 text-blue-400" />
                   </div>
                   <div>
@@ -396,6 +580,13 @@ const Index = () => {
                     <p className="text-slate-300">Receive alerts and notifications about system changes and status updates.</p>
                   </div>
                 </div>
+              </div>
+              
+              <div className="mt-8">
+                <Button variant="premium" onClick={handleBuyBot} className="group">
+                  Buy Bot Access
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </div>
             </div>
             
@@ -443,10 +634,11 @@ const Index = () => {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Join the network of operatives using HYPERLINUX iDRAC bot for advanced server reconnaissance and control.
           </p>
-          <Button className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-6 text-lg">
-            <ArrowRight className="mr-2 h-5 w-5" />
-            Invite Bot to Discord
+          <Button variant="premium" size="xl" onClick={handleBuyBot} className="group">
+            <ArrowRight className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            Buy Bot Now
           </Button>
+          <p className="mt-6 text-sm text-blue-200 opacity-80">Limited licenses available • Secure access • 24/7 support</p>
         </div>
       </section>
 
@@ -460,14 +652,14 @@ const Index = () => {
               <span className="px-1.5 py-0.5 text-xs bg-blue-600 rounded text-white font-semibold">BOT</span>
             </div>
             <div className="flex space-x-6">
-              <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
+              <a href="https://discord.gg/YngjxnDC" className="text-slate-400 hover:text-blue-400 transition-colors">
                 Discord
               </a>
               <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
                 GitHub
               </a>
               <a href="#" className="text-slate-400 hover:text-blue-400 transition-colors">
-                Documentation
+                Support
               </a>
             </div>
           </div>
