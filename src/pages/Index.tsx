@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Users, AlertTriangle, CheckCircle, Lock, Eye, Cpu, Layers, Laptop, Network, Code, ArrowDown, Command } from "lucide-react";
@@ -57,7 +56,7 @@ const Index = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="flex space-x-16">
                 <NavigationMenuItem>
                   <NavigationMenuLink href="#features" className="text-sm text-slate-300 hover:text-cyan-400 transition-colors">
                     Features
@@ -152,7 +151,7 @@ const Index = () => {
       <div className="h-24"></div>
 
       {/* Gallery Preview Section */}
-      <section id="gallery" className="py-36 bg-gradient-to-b from-slate-900 to-slate-950">
+      <section id="gallery" className="py-60 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
@@ -392,7 +391,7 @@ const Index = () => {
       <div className="h-28"></div>
 
       {/* Features Section */}
-      <section id="features" className="py-40 bg-slate-950 relative">
+      <section id="features" className="py-60 bg-slate-950 relative">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500 to-transparent"></div>
         </div>
@@ -600,7 +599,7 @@ const Index = () => {
       <div className="h-28"></div>
 
       {/* Commands Section */}
-      <section id="commands" className="py-40 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <section id="commands" className="py-60 bg-gradient-to-b from-slate-950 to-slate-900 relative">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>
         </div>
@@ -806,7 +805,7 @@ const Index = () => {
               </span>
             </div>
             
-            <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center">
               <a href="#features" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Features</a>
               <a href="#commands" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Commands</a>
               <a href="#gallery" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Gallery</a>
