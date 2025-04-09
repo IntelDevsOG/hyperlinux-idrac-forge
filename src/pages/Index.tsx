@@ -148,20 +148,25 @@ const Index = () => {
         )}
       </section>
 
+      {/* Spacing between sections */}
+      <div className="h-24"></div>
+
       {/* Gallery Preview Section */}
-      <section id="gallery" className="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
+      <section id="gallery" className="py-36 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
               COMMAND CENTER
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">The Ultimate iDRAC Control Interface</h2>
-            <p className="text-slate-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              The Ultimate iDRAC Control Interface
+            </h2>
+            <p className="text-slate-300 max-w-2xl mx-auto mb-8">
               Experience the power of STRIKERNODE iDRAC bot in action through these command examples.
             </p>
           </div>
           
-          <div className="mb-12">
+          <div className="mb-16">
             <Tabs defaultValue="all" value={currentTab} onValueChange={setCurrentTab} className="w-full">
               <div className="flex justify-center">
                 <TabsList className="bg-slate-800/50 border border-cyan-900/20">
@@ -179,13 +184,13 @@ const Index = () => {
             </Tabs>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" 
                   alt="User Management - Remove User" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -195,11 +200,11 @@ const Index = () => {
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/31d57216-1024-434c-9b52-b26724c1c516.png" 
                   alt="Root Access Approval" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -209,11 +214,11 @@ const Index = () => {
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/97accdaf-b8c1-4ed6-bf2a-a08e7f2d9789.png" 
                   alt="Status Update Command" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -223,11 +228,11 @@ const Index = () => {
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/03d8944c-9b47-4b1b-854d-514a53d302ab.png" 
                   alt="IP Information Details" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -237,11 +242,11 @@ const Index = () => {
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/0ab49ac2-54af-4352-8829-139ff5b5fd7f.png" 
                   alt="Commands Matrix" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -251,11 +256,11 @@ const Index = () => {
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
+              <AspectRatio ratio={16/9} className="bg-slate-900">
                 <img 
                   src="/lovable-uploads/0c32b658-2d77-40e4-b393-bc51a2a93742.png" 
                   alt="User Management - Add User" 
-                  className="w-full h-full object-cover bg-slate-900"
+                  className="w-full h-full object-contain"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -266,8 +271,8 @@ const Index = () => {
           </div>
           
           {/* Interactive Command Carousel */}
-          <div className="mt-16 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-6 text-center bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          <div className="mt-20 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-8 text-center bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Interactive Command Examples
             </h3>
             <Carousel className="w-full">
@@ -383,17 +388,20 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Spacing between sections */}
+      <div className="h-28"></div>
+
       {/* Features Section */}
-      <section id="features" className="py-32 bg-slate-950 relative">
+      <section id="features" className="py-40 bg-slate-950 relative">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
               ADVANCED CAPABILITIES
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               STRIKERNODE iDRAC Features
             </h2>
             <p className="text-slate-300 max-w-2xl mx-auto">
@@ -401,7 +409,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
             <div className="order-2 md:order-1 relative h-[400px]">
               <div className={`absolute transition-all duration-500 ${activeFeature === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 hidden'}`}>
                 <div className="flex items-center mb-4">
@@ -553,30 +561,30 @@ const Index = () => {
               <div className="mt-8 p-4">
                 <div className="grid grid-cols-1 gap-4">
                   <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
-                    <AspectRatio ratio={16/9} className="overflow-hidden">
+                    <AspectRatio ratio={16/9} className="bg-slate-900">
                       <img 
                         src="/lovable-uploads/0ab49ac2-54af-4352-8829-139ff5b5fd7f.png" 
                         alt="Command Matrix" 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                     </AspectRatio>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
-                      <AspectRatio ratio={16/9} className="overflow-hidden">
+                      <AspectRatio ratio={16/9} className="bg-slate-900">
                         <img 
                           src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" 
                           alt="User Management" 
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </AspectRatio>
                     </div>
                     <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
-                      <AspectRatio ratio={16/9} className="overflow-hidden">
+                      <AspectRatio ratio={16/9} className="bg-slate-900">
                         <img 
                           src="/lovable-uploads/03d8944c-9b47-4b1b-854d-514a53d302ab.png" 
                           alt="IP Information" 
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                       </AspectRatio>
                     </div>
@@ -588,17 +596,20 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Spacing between sections */}
+      <div className="h-28"></div>
+
       {/* Commands Section */}
-      <section id="commands" className="py-24 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <section id="commands" className="py-40 bg-gradient-to-b from-slate-950 to-slate-900 relative">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
               COMMAND INTERFACE
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               STRIKERNODE iDRAC Commands
             </h2>
             <p className="text-slate-300 max-w-2xl mx-auto">
@@ -763,7 +774,7 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
+      <section className="py-32 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -inset-[10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-blue-900/10 to-transparent opacity-70"></div>
         </div>
@@ -776,7 +787,7 @@ const Index = () => {
               Join our Discord community and gain immediate access to the STRIKERNODE iDRAC bot's powerful capabilities.
             </p>
             
-            <Button variant="premium" size="xl" onClick={handleBuyBot} className="group mx-auto">
+            <Button variant="futuristic" size="xl" onClick={handleBuyBot} className="group mx-auto">
               Get STRIKERNODE iDRAC Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
