@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Users, AlertTriangle, CheckCircle, Lock, Eye, Cpu, Layers, Laptop, Network } from "lucide-react";
+import { ArrowRight, Terminal, Server, Shield, Zap, Database, Globe, Users, AlertTriangle, CheckCircle, Lock, Eye, Cpu, Layers, Laptop, Network, Code, ArrowDown, Command } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
@@ -8,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -74,9 +76,9 @@ const Index = () => {
               </NavigationMenuList>
             </NavigationMenu>
             
-            <button onClick={handleBuyBot} className="bg-gradient-to-r from-cyan-600 to-blue-700 px-4 py-2 rounded-md text-white font-medium hover:shadow-lg hover:shadow-cyan-700/20 border border-cyan-500/30 transition-all">
+            <Button variant="cyber" onClick={handleBuyBot}>
               Buy Bot
-            </button>
+            </Button>
           </div>
           
           <div className="md:hidden">
@@ -141,9 +143,7 @@ const Index = () => {
         {showScrollIndicator && (
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
             <span className="text-slate-400 text-sm mb-2">Scroll to explore</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 5L12 19M12 19L19 12M12 19L5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"/>
-            </svg>
+            <ArrowDown className="h-5 w-5 text-cyan-400" />
           </div>
         )}
       </section>
@@ -157,22 +157,22 @@ const Index = () => {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">The Ultimate iDRAC Control Interface</h2>
             <p className="text-slate-300 max-w-2xl mx-auto">
-              View a comprehensive gallery of STRIKERNODE iDRAC bot capabilities.
+              Experience the power of STRIKERNODE iDRAC bot in action through these command examples.
             </p>
           </div>
           
-          <div className="mb-8">
+          <div className="mb-12">
             <Tabs defaultValue="all" value={currentTab} onValueChange={setCurrentTab} className="w-full">
               <div className="flex justify-center">
                 <TabsList className="bg-slate-800/50 border border-cyan-900/20">
                   <TabsTrigger value="all" className="data-[state=active]:bg-cyan-900/30 data-[state=active]:text-cyan-400">
-                    All Screenshots
+                    All Commands
                   </TabsTrigger>
                   <TabsTrigger value="controls" className="data-[state=active]:bg-cyan-900/30 data-[state=active]:text-cyan-400">
-                    Controls
+                    User Management
                   </TabsTrigger>
                   <TabsTrigger value="monitor" className="data-[state=active]:bg-cyan-900/30 data-[state=active]:text-cyan-400">
-                    Monitoring
+                    System Operations
                   </TabsTrigger>
                 </TabsList>
               </div>
@@ -183,51 +183,51 @@ const Index = () => {
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/7f056c4f-07de-408a-b1e7-e4eceb3734bb.png" 
-                  alt="STRIKERNODE iDRAC Bot IP Dashboard" 
-                  className="w-full h-full object-contain"
+                  src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" 
+                  alt="User Management - Remove User" 
+                  className="w-full h-full object-cover bg-slate-900"
                 />
               </AspectRatio>
               <div className="p-4">
-                <h3 className="font-medium text-cyan-300">IP Dashboard</h3>
-                <p className="text-sm text-slate-400">Comprehensive iDRAC IP database</p>
+                <h3 className="font-medium text-cyan-300">User Management</h3>
+                <p className="text-sm text-slate-400">!removeuser command to remove members from crew</p>
               </div>
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/1bc9dbf9-e7f6-47bc-81f6-9d35933e05cf.png" 
-                  alt="iDRAC Status Update" 
-                  className="w-full h-full object-contain"
+                  src="/lovable-uploads/31d57216-1024-434c-9b52-b26724c1c516.png" 
+                  alt="Root Access Approval" 
+                  className="w-full h-full object-cover bg-slate-900"
+                />
+              </AspectRatio>
+              <div className="p-4">
+                <h3 className="font-medium text-cyan-300">Access Control</h3>
+                <p className="text-sm text-slate-400">!approve command to grant root access</p>
+              </div>
+            </div>
+            
+            <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
+              <AspectRatio ratio={16/9} className="overflow-hidden">
+                <img 
+                  src="/lovable-uploads/97accdaf-b8c1-4ed6-bf2a-a08e7f2d9789.png" 
+                  alt="Status Update Command" 
+                  className="w-full h-full object-cover bg-slate-900"
                 />
               </AspectRatio>
               <div className="p-4">
                 <h3 className="font-medium text-cyan-300">Status Updates</h3>
-                <p className="text-sm text-slate-400">Real-time status notifications</p>
-              </div>
-            </div>
-            
-            <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/e0476fdf-763e-4ead-8b98-f02165584946.png" 
-                  alt="iDRAC System Status" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
-              <div className="p-4">
-                <h3 className="font-medium text-cyan-300">System Status</h3>
-                <p className="text-sm text-slate-400">Database and IP monitoring</p>
+                <p className="text-sm text-slate-400">!setstatus command for channel monitoring</p>
               </div>
             </div>
             
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/c503d9e3-1f99-4637-9055-5fee2163aab3.png" 
+                  src="/lovable-uploads/03d8944c-9b47-4b1b-854d-514a53d302ab.png" 
                   alt="IP Information Details" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover bg-slate-900"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -239,37 +239,9 @@ const Index = () => {
             <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/3b6c067d-5f64-46ca-85bd-25195b9a9cea.png" 
-                  alt="IP Info Command" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
-              <div className="p-4">
-                <h3 className="font-medium text-cyan-300">IP Lookup</h3>
-                <p className="text-sm text-slate-400">Direct IP intelligence commands</p>
-              </div>
-            </div>
-            
-            <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/ad107a68-fa76-4c1a-866b-cffb3018b583.png" 
-                  alt="iDRAC Bot Status" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
-              <div className="p-4">
-                <h3 className="font-medium text-cyan-300">Bot Status</h3>
-                <p className="text-sm text-slate-400">Live operational indicators</p>
-              </div>
-            </div>
-            
-            <div className={`${currentTab === 'all' || currentTab === 'controls' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/923f9e27-d708-48bb-807d-1e732264960c.png" 
-                  alt="iDRAC Command List" 
-                  className="w-full h-full object-contain"
+                  src="/lovable-uploads/0ab49ac2-54af-4352-8829-139ff5b5fd7f.png" 
+                  alt="Commands Matrix" 
+                  className="w-full h-full object-cover bg-slate-900"
                 />
               </AspectRatio>
               <div className="p-4">
@@ -281,30 +253,132 @@ const Index = () => {
             <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
               <AspectRatio ratio={16/9} className="overflow-hidden">
                 <img 
-                  src="/lovable-uploads/80404885-8e92-4a05-83fd-a8621c8b8b83.png" 
-                  alt="User Management" 
-                  className="w-full h-full object-contain"
+                  src="/lovable-uploads/0c32b658-2d77-40e4-b393-bc51a2a93742.png" 
+                  alt="User Management - Add User" 
+                  className="w-full h-full object-cover bg-slate-900"
                 />
               </AspectRatio>
               <div className="p-4">
                 <h3 className="font-medium text-cyan-300">User Management</h3>
-                <p className="text-sm text-slate-400">Admin user control system</p>
+                <p className="text-sm text-slate-400">!adduser command to add new crew members</p>
               </div>
             </div>
-            
-            <div className={`${currentTab === 'all' || currentTab === 'monitor' ? 'block' : 'hidden'} bg-slate-800 rounded-xl border border-cyan-900/30 overflow-hidden hover:shadow-lg hover:shadow-cyan-900/20 transition-all transform hover:scale-[1.02]`}>
-              <AspectRatio ratio={16/9} className="overflow-hidden">
-                <img 
-                  src="/lovable-uploads/37a48ced-c0b9-4f73-868b-21fa7e6a6df1.png" 
-                  alt="System Monitoring" 
-                  className="w-full h-full object-contain"
-                />
-              </AspectRatio>
-              <div className="p-4">
-                <h3 className="font-medium text-cyan-300">System Monitoring</h3>
-                <p className="text-sm text-slate-400">Real-time performance tracking</p>
-              </div>
-            </div>
+          </div>
+          
+          {/* Interactive Command Carousel */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6 text-center bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Interactive Command Examples
+            </h3>
+            <Carousel className="w-full">
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="bg-slate-800/70 border border-cyan-900/30 rounded-xl p-6 mx-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-slate-700">
+                        <img src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" alt="User" className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-cyan-400">Intelstrikerv2</span>
+                          <span className="text-xs text-slate-500">12:00</span>
+                        </div>
+                        <p className="text-white">!removeuser @STRIKER MUSIC</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 border-l-4 border-red-500 pl-4">
+                      <div className="flex items-center gap-2 mb-1">
+                        <img src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" alt="Bot" className="w-6 h-6 rounded-full" />
+                        <span className="font-semibold text-blue-400">IDRAC</span>
+                        <span className="bg-blue-600 text-xs px-2 rounded text-white">APP</span>
+                        <span className="text-xs text-slate-500">12:00</span>
+                      </div>
+                      <div className="bg-slate-900 rounded-md p-3 mt-1">
+                        <p className="mb-1 text-cyan-300 font-medium">User Management</p>
+                        <p className="text-green-400">✅ STRIKER MUSIC removed from the crew!</p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                
+                <CarouselItem>
+                  <div className="bg-slate-800/70 border border-cyan-900/30 rounded-xl p-6 mx-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-slate-700">
+                        <img src="/lovable-uploads/31d57216-1024-434c-9b52-b26724c1c516.png" alt="User" className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-cyan-400">Intelstrikerv2</span>
+                          <span className="text-xs text-slate-500">05/04/2025, 07:39</span>
+                        </div>
+                        <p className="text-white">!approve f875622120eebf1f6d00ba0aab8b64ff</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 border-l-4 border-green-500 pl-4">
+                      <div className="flex items-center gap-2 mb-1">
+                        <img src="/lovable-uploads/31d57216-1024-434c-9b52-b26724c1c516.png" alt="Bot" className="w-6 h-6 rounded-full" />
+                        <span className="font-semibold text-blue-400">IDRAC</span>
+                        <span className="bg-blue-600 text-xs px-2 rounded text-white">APP</span>
+                        <span className="text-xs text-slate-500">05/04/2025, 07:39</span>
+                      </div>
+                      <div className="bg-slate-900 rounded-md p-3 mt-1">
+                        <p className="text-green-400">✅ Approved root - account created!</p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+                
+                <CarouselItem>
+                  <div className="bg-slate-800/70 border border-cyan-900/30 rounded-xl p-6 mx-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-slate-700">
+                        <img src="/lovable-uploads/03d8944c-9b47-4b1b-854d-514a53d302ab.png" alt="User" className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-cyan-400">IDRAC</span>
+                          <span className="bg-blue-600 text-xs px-2 rounded text-white">APP</span>
+                          <span className="text-xs text-slate-500">12:02</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-2 border-l-4 border-blue-500 pl-4">
+                      <div className="bg-slate-900 rounded-md p-4 mt-1">
+                        <p className="mb-2 text-cyan-300 font-medium">IP Information</p>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex">
+                            <span className="w-24 text-slate-400">IP Address</span>
+                            <span className="text-white">192.154.224.10</span>
+                          </div>
+                          <div className="flex">
+                            <span className="w-24 text-slate-400">City</span>
+                            <span className="text-white">Dallas</span>
+                          </div>
+                          <div className="flex">
+                            <span className="w-24 text-slate-400">Region</span>
+                            <span className="text-white">Texas</span>
+                          </div>
+                          <div className="flex">
+                            <span className="w-24 text-slate-400">Country</span>
+                            <span className="text-white">United States</span>
+                          </div>
+                          <div className="flex">
+                            <span className="w-24 text-slate-400">ISP</span>
+                            <span className="text-white">AS397423 Tier.Net Technologies LLC</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="-left-4 md:-left-6" />
+              <CarouselNext className="-right-4 md:-right-6" />
+            </Carousel>
           </div>
         </div>
       </section>
@@ -319,9 +393,11 @@ const Index = () => {
             <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
               ADVANCED CAPABILITIES
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Powerful iDRAC Features</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              STRIKERNODE iDRAC Features
+            </h2>
             <p className="text-slate-300 max-w-2xl mx-auto">
-              STRIKERNODE iDRAC bot includes specialized tools designed for discovering and managing Dell iDRAC systems.
+              Unlock powerful iDRAC management capabilities through our specialized Discord bot interface.
             </p>
           </div>
 
@@ -479,9 +555,9 @@ const Index = () => {
                   <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
                     <AspectRatio ratio={16/9} className="overflow-hidden">
                       <img 
-                        src="/lovable-uploads/90a32cc9-3ca7-4e7e-838c-b73cfd0379a4.png" 
-                        alt="iDRAC IP Dashboard" 
-                        className="w-full h-full object-contain"
+                        src="/lovable-uploads/0ab49ac2-54af-4352-8829-139ff5b5fd7f.png" 
+                        alt="Command Matrix" 
+                        className="w-full h-full object-cover"
                       />
                     </AspectRatio>
                   </div>
@@ -489,15 +565,263 @@ const Index = () => {
                     <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
                       <AspectRatio ratio={16/9} className="overflow-hidden">
                         <img 
-                          src="/lovable-uploads/17bc7347-d23a-476e-9133-702010839a01.png" 
-                          alt="iDRAC Status" 
-                          className="w-full h-full object-contain"
+                          src="/lovable-uploads/11f29bd1-43cf-4783-8308-9ad8b51d28d8.png" 
+                          alt="User Management" 
+                          className="w-full h-full object-cover"
                         />
                       </AspectRatio>
                     </div>
                     <div className="bg-slate-800 rounded-lg overflow-hidden border border-cyan-900/30">
                       <AspectRatio ratio={16/9} className="overflow-hidden">
                         <img 
-                          src="/lovable-uploads/19f1acc6-cb9e-425e-987f-41b5f464078c.png" 
+                          src="/lovable-uploads/03d8944c-9b47-4b1b-854d-514a53d302ab.png" 
                           alt="IP Information" 
-                          className="w-
+                          className="w-full h-full object-cover"
+                        />
+                      </AspectRatio>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Commands Section */}
+      <section id="commands" className="py-24 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500 to-transparent"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block px-3 py-1 bg-cyan-900/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
+              COMMAND INTERFACE
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              STRIKERNODE iDRAC Commands
+            </h2>
+            <p className="text-slate-300 max-w-2xl mx-auto">
+              Access the full power of iDRAC systems through these specialized Discord commands.
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto bg-slate-900/70 border border-blue-900/20 rounded-xl p-6">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                <Command className="h-5 w-5 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white">Command Operations</h3>
+            </div>
+            
+            <div className="border-l-4 border-blue-600 pl-4 py-1 mb-6">
+              <p className="text-slate-300">Welcome to the grid, operative. Below is your access panel for executing high-priority commands. Stay sharp.</p>
+            </div>
+            
+            <div className="space-y-4">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Command className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!help</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Displays the complete command matrix with all available operations.
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-2" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Users className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!adduser &lt;@user&gt;</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Recruits a new operative to the system. <span className="text-yellow-400">Admin only command.</span>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-3" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Users className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!removeuser &lt;@user&gt;</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Removes an operative from the system. <span className="text-yellow-400">Admin only command.</span>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-4" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Globe className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!getips</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Extracts the latest IP intel from the network.
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-5" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <CheckCircle className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!approve &lt;token&gt;</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Grants access to a pending login. <span className="text-yellow-400">Admin only command.</span>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-6" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <AlertTriangle className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!deny &lt;token&gt;</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Rejects a login attempt. <span className="text-yellow-400">Admin only command.</span>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-7" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Server className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!setstatus</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Sets the channel where information will be sent. <span className="text-yellow-400">Admin only command.</span>
+                  </AccordionContent>
+                </AccordionItem>
+                
+                <AccordionItem value="item-8" className="border-b border-slate-800">
+                  <AccordionTrigger className="text-cyan-300 hover:text-cyan-400">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-900/30 flex items-center justify-center">
+                        <Globe className="h-4 w-4 text-cyan-400" />
+                      </div>
+                      <span>!ipinfo &lt;ip&gt;</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-300 pl-11">
+                    Sends IP region information in DMs.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+            
+            <div className="mt-8 bg-blue-900/20 border border-blue-900/30 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-4">
+                <AlertTriangle className="h-5 w-5 text-cyan-400" />
+                <h4 className="font-medium text-cyan-300">OPERATIONS BRIEFING</h4>
+              </div>
+              <ul className="space-y-2 text-sm text-slate-300 pl-4">
+                <li className="flex items-start gap-2">
+                  <div className="min-w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5"></div>
+                  <p>Commands are case-sensitive.</p>
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="min-w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5"></div>
+                  <p>Admin commands require elevated privileges.</p>
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="min-w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5"></div>
+                  <p>Use <code>!getips</code> to interface with IP data directly.</p>
+                </li>
+                <li className="flex items-start gap-2">
+                  <div className="min-w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5"></div>
+                  <p>Verify login tokens before approving or denying access.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA Section */}
+      <section className="py-24 bg-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -inset-[10%] w-[120%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-blue-900/10 to-transparent opacity-70"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Ready to Take Control of Your iDRAC Systems?
+            </h2>
+            <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+              Join our Discord community and gain immediate access to the STRIKERNODE iDRAC bot's powerful capabilities.
+            </p>
+            
+            <Button variant="premium" size="xl" onClick={handleBuyBot} className="group mx-auto">
+              Get STRIKERNODE iDRAC Now
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      {/* Footer */}
+      <footer className="bg-slate-950 border-t border-slate-800 py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center mb-6 md:mb-0">
+              <Terminal className="h-7 w-7 text-cyan-400 mr-2" />
+              <span className="font-bold text-xl bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                STRIKERNODE iDRAC
+              </span>
+            </div>
+            
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
+              <a href="#features" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Features</a>
+              <a href="#commands" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Commands</a>
+              <a href="#gallery" className="text-sm text-slate-400 hover:text-cyan-400 transition-colors">Gallery</a>
+              <Button variant="outline" size="sm" onClick={handleBuyBot} className="text-cyan-400 border-cyan-900/50 hover:bg-cyan-900/20">
+                Discord
+              </Button>
+            </div>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-slate-500 mb-4 md:mb-0">
+              © {new Date().getFullYear()} STRIKERNODE Systems. All rights reserved.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-slate-500 hover:text-cyan-400 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-slate-500 hover:text-cyan-400 transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Index;

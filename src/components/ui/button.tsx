@@ -20,8 +20,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         premium: "bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 shadow-lg shadow-blue-700/20",
-        cyber: "bg-gradient-to-r from-cyan-500 to-blue-700 text-white hover:from-cyan-600 hover:to-blue-800 shadow-lg shadow-cyan-700/20 border border-cyan-400/30",
+        cyber: "bg-gradient-to-r from-cyan-500 to-blue-700 text-white hover:from-cyan-600 hover:to-blue-800 shadow-lg shadow-cyan-700/20 border border-cyan-400/30 hover:shadow-xl hover:shadow-cyan-700/30 transition-all duration-300",
         accent: "bg-gradient-to-r from-indigo-600 to-violet-700 text-white hover:from-indigo-700 hover:to-violet-800 shadow-lg shadow-indigo-700/20",
+        neon: "bg-transparent border border-cyan-500 text-cyan-400 hover:bg-cyan-950/30 shadow-[0_0_15px_rgba(34,211,238,0.5)] hover:shadow-[0_0_25px_rgba(34,211,238,0.7)] transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
